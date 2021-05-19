@@ -8,15 +8,17 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 // };
 
 // const extractBearerToken = (header) => header.replace('Bearer ', '');
+const extractBearerToken = (header) => header.replace('Bearer ', '');
 
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
-  const token = req.cookies.userToken;
-
-  if (!token) {
+  const { authorization } = req.headers;
+  // const { authorization } = req.headers;
+  // const tokens = authorization.replace('Bearer ', '');
+  if (!authorization || !authorization.startsWith('Bearer ')) {
     return res.status(401).send({ message: 'необходима авторизация' });
   }
-
+  const token = extractBearerToken(authorization);
   let payload;
 
   try {

@@ -1,4 +1,5 @@
 const Cards = require('../models/cards');
+const Users = require('../models/users');
 const NotFoundError = require('../Errors/NotFoundError');
 const RequestError = require('../Errors/RequestError');
 
@@ -54,45 +55,54 @@ module.exports.deleteСard = (req, res, next) => {
 };
 
 module.exports.likeCard = (req, res, next) => {
-  Cards.findByIdAndUpdate(
-    req.params.cardId,
-    { $addToSet: { likes: req.user._id } },
-    { new: true },
-  )
-    .then((cards) => {
-      if (cards) {
-        res.send({ data: cards });
-      } else {
-        throw new NotFoundError('Переданы некорректные данные для постановки лайка.');
-      }
-    })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new RequestError('Переданы некорректные данные при постановке лайка.'));
-        return;
-      }
-      next(err);
+  Users.findById(req.user._id)
+    .then((userInfo) => {
+      console.log(userInfo);
+      Cards.findByIdAndUpdate(
+        req.params.cardId,
+        { $addToSet: { likes: userInfo } },
+        { new: true },
+      )
+        .then((cards) => {
+          console.log(cards);
+          if (cards) {
+            res.send({ data: cards });
+          } else {
+            throw new NotFoundError('Переданы некорректные данные для постановки лайка.');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.name === 'CastError') {
+            next(new RequestError('Переданы некорректные данные при постановке лайка.'));
+            return;
+          }
+          next(err);
+        });
     });
 };
 
 module.exports.dislikeCard = (req, res, next) => {
-  Cards.findByIdAndUpdate(
-    req.params.cardId,
-    { $pull: { likes: req.user._id } },
-    { new: true },
-  )
-    .then((cards) => {
-      if (cards) {
-        res.send({ data: cards });
-      } else {
-        throw new NotFoundError('Переданы некорректные данные для снятии лайка.');
-      }
-    })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new RequestError('Переданы некорректные данные при снятие лайка.'));
-        return;
-      }
-      next(err);
+  Users.findById(req.user._id)
+    .then((userInfo) => {
+      Cards.findByIdAndUpdate(
+        req.params.cardId,
+        { $pull: { likes: userInfo } },
+        { new: true },
+      )
+        .then((cards) => {
+          if (cards) {
+            res.send({ data: cards });
+          } else {
+            throw new NotFoundError('Переданы некорректные данные для снятии лайка.');
+          }
+        })
+        .catch((err) => {
+          if (err.name === 'CastError') {
+            next(new RequestError('Переданы некорректные данные при снятие лайка.'));
+            return;
+          }
+          next(err);
+        });
     });
 };

@@ -153,13 +153,17 @@ module.exports.login = (req, res, next) => {
 
   return Users.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-      res.cookie('userToken', token, {
-        maxAge: 360000,
-        httpOnly: true,
-        sameSite: true,
+      console.log(user);
+      // eslint-disable-next-line max-len
+      // const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+      // res.cookie('userToken', token, {
+      //   maxAge: 360000,
+      //   httpOnly: true,
+      //   sameSite: true,
+      // });
+      res.send({
+        token: jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' }),
       });
-      res.send({ _id: user._id });
     })
     .catch((err) => {
       if (err.status !== 500) {
