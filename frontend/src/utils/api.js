@@ -1,6 +1,5 @@
 class Api{
     constructor(data){
-        this._groupId = data.groupId;
         this._address = data.address;
         this._token = `Bearer ${localStorage.getItem('token')}`;
     }
@@ -151,13 +150,9 @@ class Api{
 }
 
 const config = {
-
-    address: `http://localhost:3005`,
-    // token: 'ff772675-543c-463e-9612-0881eae5b0a5'
+    address: `http://vasilyevir-mesto-backend.nomoredomains.icu`
 }
 
 const api = new Api(config);
-// console.log(config);
-// console.log(api);
 
 export default api;
