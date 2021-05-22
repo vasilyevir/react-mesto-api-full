@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://vasilyevir-mesto-backend.nomoredomains.icu';
+export const BASE_URL = 'http://localhost:3005';
 
 export const register = ({password, email}) => {
     console.log(BASE_URL)

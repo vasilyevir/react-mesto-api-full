@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
+const path = require('path');
 const cors = require('cors');
 const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./Errors/NotFoundError');
@@ -38,6 +39,8 @@ app.post('/signup', celebrate({
 
 app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена.'));

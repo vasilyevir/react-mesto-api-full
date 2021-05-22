@@ -150,7 +150,7 @@ class Api{
 }
 
 const config = {
-    address: `http://vasilyevir-mesto-backend.nomoredomains.icu`
+    address: `http://localhost:3005`
 }
 
 const api = new Api(config);
