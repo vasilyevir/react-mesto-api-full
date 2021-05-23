@@ -4,16 +4,14 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
-const path = require('path');
 const cors = require('cors');
 const { createUser, login } = require('./controllers/users');
 const NotFoundError = require('./Errors/NotFoundError');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3005 } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -26,6 +24,7 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
 app.post('/signin', login);
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -39,8 +38,6 @@ app.post('/signup', celebrate({
 
 app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена.'));
