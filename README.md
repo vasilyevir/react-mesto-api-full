@@ -4,3 +4,4 @@
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке. 
 
 vasilyevir-mesto.nomoredomains.icu
+vasilyevir-mesto-backend.nomoredomains.icu
