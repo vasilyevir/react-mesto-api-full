@@ -149,7 +149,7 @@ class Api{
 }
 
 const config = {
-    address: `http://vasilyevir-mesto-backend.nomoredomains.icu`
+    address: `https://vasilyevir-mesto-backend.nomoredomains.icu`
 }
 
 const api = new Api(config);
