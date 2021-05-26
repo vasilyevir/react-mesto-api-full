@@ -1,11 +1,5 @@
-// import logo from '../logo.svg';
-// import Header from './Header'
 import Footer from './Footer';
 import Main from './Main';
-// import EditProfilePopup from './EditProfilePopup';
-// import EditAvatarPopup from './EditAvatarPopup';
-// import AddPlacePopup from './AddPlacePopup'
-// import ImagePopup from './ImagePopup';
 import Login from './Login';
 import Register from './Register';
 import {useState, useEffect} from 'react';
@@ -57,10 +51,8 @@ function App() {
     }, [loggedIn])
 
     const handleRegister = ({ password, email }) => {
-      // console.log({password, email })
       return Auth.register({ password, email }).then((res) => {
         if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
-        history.push("/signin");
         return res;
       }).catch()
     }

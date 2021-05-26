@@ -93,10 +93,9 @@ class Api{
     }
 
     postLike(cardId, isLiked){
-        console.log(cardId, isLiked)
         if (isLiked) {
             // console.log(cardId);
-            return fetch(`${this._address}/cards/likes/${cardId}`, {
+            return fetch(`${this._address}/cards/${cardId}/likes`, {
                 method: 'PUT',
                 headers: {
                     authorization : this._token,
@@ -112,7 +111,7 @@ class Api{
             })
         } else {
             // console.log(cardId);
-            return fetch(`${this._address}/cards/likes/${cardId}`,{
+            return fetch(`${this._address}/cards/${cardId}/likes`,{
                 method: 'DELETE',
                 headers: {
                     authorization : this._token

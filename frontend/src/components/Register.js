@@ -41,7 +41,7 @@ const Registr = ({onRegister}) => {
                 <form onSubmit={handleSubmit} className="login__form">
                     <input id="email" name="email" className="login__input" type="email" value={userData.email} placeholder="Email" onChange={handleChange}/>
                     <input id="password" name="password" className="login__input" type="password" value={userData.password} placeholder="Пароль" onChange={handleChange}/>
-                    <button className="login__button">Зарегестрироваться</button>
+                    <button className="login__button">Зарегистрироваться</button>
                 </form>
                 <p className="login__registr">Уже зарегистрированы? <Link className="login__link" to="/signin">Войти</Link> </p>
             </div>

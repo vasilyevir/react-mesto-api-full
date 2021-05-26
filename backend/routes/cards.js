@@ -19,13 +19,13 @@ routes.delete('/:cardId', celebrate({
     cardId: Joi.string().alphanum().length(24),
   }),
 }), deleteСard);
-routes.put('/likes/:cardId', celebrate({
+routes.put('/:cardId/likes', celebrate({
   params: Joi.object().keys({
     cardId: Joi.string().alphanum().length(24),
     // _id: Joi.string().alphanum().length(24),
   }),
 }), likeCard);
-routes.delete('/likes/:cardId', celebrate({
+routes.delete('/:cardId/likes', celebrate({
   params: Joi.object().keys({
     cardId: Joi.string().alphanum().length(24),
     // _id: Joi.string().alphanum().length(24),
