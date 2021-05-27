@@ -34,7 +34,7 @@ function Login(props) {
         <>
             <Header>
                 <>
-                    <Link className="login__link" to="/signup">Регистрация</Link>
+                    <Link className="login__link login__link_header" to="/signup">Регистрация</Link>
                 </>
             </Header>
             <div className="login">

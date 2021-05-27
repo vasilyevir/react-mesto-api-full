@@ -1,3 +1,5 @@
-/* .login__link_header{
-
-} */
+@media (max-width: 540px){
+    .login__link_header{
+        margin: 40px auto 14px;
+    }
+}
