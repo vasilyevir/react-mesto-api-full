@@ -1,6 +1,5 @@
 import Header from './Header';
-import Footer from './Footer';
-import {useState, useEffect, useHistory} from 'react';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import InfoTooltip from './InfoTooltip';
 
