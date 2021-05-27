@@ -59,3 +59,4 @@
 @import './blocks/login/__button/login__button.css';
 @import './blocks/login/__registr/login__registr.css';
 @import './blocks/login/__link/login__link.css';
+@import './blocks/login/__link/_header/login__link_header.css';
