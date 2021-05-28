@@ -47,6 +47,7 @@ function App() {
     useEffect(() => {
       if (loggedIn) {
         history.push("/main");
+        console.log(1);
       }
     }, [loggedIn])
 
