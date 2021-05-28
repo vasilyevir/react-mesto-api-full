@@ -42,6 +42,12 @@ function App() {
                   console.log(currentUser);
               })
               .catch((err)=>{console.log(err)})
+            Auth.getContent(data.token)
+              .then(data => {
+                  setCurrentCards(data);
+                  console.log(currentCards);
+              })
+              .catch((err)=>{console.log(err)})
             return;
           }
         })

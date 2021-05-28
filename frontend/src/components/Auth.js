@@ -42,5 +42,16 @@ export const getContent = (token) => {
     .then(checkResponse)
 }
 
+export const getCards = (token) => {
+    return fetch(`${BASE_URL}/cards`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(checkResponse)
+}
+
 const checkResponse = (res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.statusText}`)
 
