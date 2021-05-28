@@ -67,9 +67,9 @@ function App() {
         let token = localStorage.getItem('token');
         Auth.getContent(token).then(({data}) => {
           if (data._id) {
-            console.log('token')
             setLoggedIn(true)
             setUserData(data)
+            console.log(userData)
           }
       })
     }
@@ -171,7 +171,7 @@ function App() {
       api.getInformation()
       .then(data => {
           setCurrentUser(data.data);
-          console.log('useEffect');
+          console.log(currentUser);
       })
       .catch((err)=>{console.log(err)})
   },[])
