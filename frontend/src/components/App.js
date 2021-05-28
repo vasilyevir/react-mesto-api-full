@@ -23,9 +23,9 @@ function App() {
     const [infoTooltipImage, setInfoTooltipImage] = useState("");
     const [infoTooltipText, setInfoTooltipText] = useState("");
 
-    useEffect(() => {
-      tokenCheck()
-    }, [])
+    // useEffect(() => {
+    //   tokenCheck()
+    // }, [])
 
     const handleLogin = ({ password, email  }) => {
       return Auth.authorize(password, email)
@@ -35,7 +35,7 @@ function App() {
             setLoggedIn(true)
             localStorage.setItem('token', data.token)
             infoTooltipPopup();
-            history.push('/main')
+            // history.push('/main')
             return;
           }
         })
@@ -58,9 +58,9 @@ function App() {
     }
     const history = useHistory();
 
-    // useEffect(() => {
-    //   tokenCheck()
-    // }, [])
+    useEffect(() => {
+      tokenCheck()
+    }, [])
 
     const tokenCheck = () => {
       if (localStorage.getItem('token')) {
@@ -167,7 +167,7 @@ function App() {
     }
 
     useEffect(()=>{
-      Auth.getContent()
+      api.getInformation()
       .then(data => {
           setCurrentUser(data.data);
           console.log(currentUser);

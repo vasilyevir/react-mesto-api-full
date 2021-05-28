@@ -4,20 +4,20 @@ class Api{
         this._token = `Bearer ${localStorage.getItem('token')}`;
     }
     
-    // getInformation(){
-    //     return fetch(`${this._address}/users/me`, {
-    //         headers: {
-    //             authorization : this._token
-    //         }
-    //     })
-    //     .then((res) => {
-    //         if (res.ok){
-    //             return res.json();
-    //         }
+    getInformation(){
+        return fetch(`${this._address}/users/me`, {
+            headers: {
+                authorization : this._token
+            }
+        })
+        .then((res) => {
+            if (res.ok){
+                return res.json();
+            }
 
-    //     return Promise.reject(`Ошибка: ${res.status}`);
-    //     });
-    // }
+        return Promise.reject(`Ошибка: ${res.status}`);
+        });
+    }
 
     getCards(){
         return fetch(`${this._address}/cards`,{
