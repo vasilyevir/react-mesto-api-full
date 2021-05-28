@@ -59,8 +59,22 @@ function App() {
     }
     const history = useHistory();
 
+    // useEffect(() => {
+    //   userCheck();
+    // }, [])
+
+    // const userCheck = () => {
+    //   api.getInformation()
+    //     .then(data => {
+    //         setCurrentUser(data);
+    //         // console.log(data)
+    //     })
+    //     .catch((err)=>{console.log(err)})
+    // }
+
     useEffect(() => {
       tokenCheck()
+      console.log(2);
     }, [])
 
     const tokenCheck = () => {
