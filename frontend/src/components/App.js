@@ -35,10 +35,11 @@ function App() {
             setLoggedIn(true)
             localStorage.setItem('token', data.token)
             infoTooltipPopup();
+            console.log(data);
             Auth.getContent(data.token)
               .then(data => {
                   setCurrentUser(data);
-                  console.log(currentUser);
+                  console.log(data);
               })
               .catch((err)=>{console.log(err)})
             return;
