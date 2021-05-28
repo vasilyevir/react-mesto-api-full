@@ -38,8 +38,8 @@ function App() {
             console.log(data);
             Auth.getContent(data.token)
               .then(data => {
-                  setCurrentUser(data);
-                  console.log(data);
+                  setCurrentUser(data.data);
+                  console.log(currentUser);
               })
               .catch((err)=>{console.log(err)})
             return;
