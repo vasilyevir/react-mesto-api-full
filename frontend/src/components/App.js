@@ -35,7 +35,12 @@ function App() {
             setLoggedIn(true)
             localStorage.setItem('token', data.token)
             infoTooltipPopup();
-            // history.push('/main')
+            api.getInformation()
+              .then(data => {
+                  setCurrentUser(data);
+                  console.log(1);
+              })
+              .catch((err)=>{console.log(err)})
             return;
           }
         })
@@ -112,17 +117,6 @@ function App() {
           history.push("/main");
         }
       }, [loggedIn])
-
-      useEffect(()=>{
-        if (loggedIn) {
-          api.getInformation()
-            .then(data => {
-                setCurrentUser(data.data);
-                console.log(currentUser)
-            })
-            .catch((err)=>{console.log(err)})
-        }
-      }, [currentUser])
 
     function handleCardLike(card) {
         // console.log(typeof card.likes);
