@@ -35,8 +35,8 @@ export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
     })
     .then(checkResponse)

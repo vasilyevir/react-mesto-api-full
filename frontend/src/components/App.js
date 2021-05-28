@@ -58,9 +58,9 @@ function App() {
     }
     const history = useHistory();
 
-    useEffect(() => {
-      tokenCheck()
-    }, [])
+    // useEffect(() => {
+    //   tokenCheck()
+    // }, [])
 
     const tokenCheck = () => {
       if (localStorage.getItem('token')) {
@@ -167,7 +167,7 @@ function App() {
     }
 
     useEffect(()=>{
-      api.getInformation()
+      Auth.getContent()
       .then(data => {
           setCurrentUser(data.data);
           console.log(currentUser);
