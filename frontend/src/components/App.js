@@ -47,7 +47,7 @@ function App() {
     useEffect(() => {
       if (loggedIn) {
         history.push("/main");
-        console.log(1);
+        
       }
     }, [loggedIn])
 
@@ -112,6 +112,17 @@ function App() {
           history.push("/main");
         }
       }, [loggedIn])
+
+      useEffect(()=>{
+        if (loggedIn) {
+          api.getInformation()
+            .then(data => {
+                setCurrentUser(data.data);
+                console.log(currentUser)
+            })
+            .catch((err)=>{console.log(err)})
+        }
+      }, [currentUser])
 
     function handleCardLike(card) {
         // console.log(typeof card.likes);
