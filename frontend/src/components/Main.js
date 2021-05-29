@@ -56,7 +56,7 @@ function Main(props){
     <>
     <Header>
         <div className="profile__user-content">
-            <p className="profile__email">{props.currentUser.email}</p>
+            <p className="profile__email">{currentUser.email}</p>
             <Link className="login__link" onClick={props.signOut} to="/signin">Выйти</Link>
         </div>
     </Header>
