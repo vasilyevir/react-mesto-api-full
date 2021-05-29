@@ -1,8 +1,7 @@
-import {useState, useEffect, useContext} from 'react';
-import PopupWithForm from './PopupWithForm';
+import {useState, useContext} from 'react';
 import Card from './Card';
 import CurrentUserContext from '../contexts/CurrentUserContext';
-import { Route, Switch, Redirect, useHistory, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Header from './Header';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
@@ -57,7 +56,7 @@ function Main(props){
     <>
     <Header>
         <div className="profile__user-content">
-            <p className="profile__email">{props.user.email}</p>
+            <p className="profile__email">{props.currentUser.email}</p>
             <Link className="login__link" onClick={props.signOut} to="/signin">Выйти</Link>
         </div>
     </Header>

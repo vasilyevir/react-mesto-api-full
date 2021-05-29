@@ -3,7 +3,7 @@ import Main from './Main';
 import Login from './Login';
 import Register from './Register';
 import {useState, useEffect} from 'react';
-import { Route, Switch, Redirect, useHistory, Link} from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import api from '../utils/api'
 import CurrentUserContext from '../contexts/CurrentUserContext';
@@ -16,10 +16,10 @@ function App() {
     const [currentUser, setCurrentUser] = useState({});
     const [currentCards, setCurrentCards] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [userData, setUserData] = useState({
-        username: '',
-        email: ''
-      })
+    // const [userData, setUserData] = useState({
+    //     username: '',
+    //     email: ''
+    //   })
     const [infoTooltipImage, setInfoTooltipImage] = useState("");
     const [infoTooltipText, setInfoTooltipText] = useState("");
 
@@ -55,12 +55,12 @@ function App() {
           )
     }
 
-    useEffect(() => {
-      if (loggedIn) {
-        history.push("/main");
+    // useEffect(() => {
+    //   if (loggedIn) {
+    //     history.push("/main");
         
-      }
-    }, [loggedIn])
+    //   }
+    // }, [loggedIn])
 
     const handleRegister = ({ password, email }) => {
       return Auth.register({ password, email }).then((res) => {
@@ -94,8 +94,8 @@ function App() {
         Auth.getContent(token).then(({data}) => {
           if (data._id) {
             setLoggedIn(true)
-            setUserData(data)
-            console.log(userData)
+            setCurrentUser(data)
+            // console.log(userData)
           }
       })
     }
@@ -193,14 +193,14 @@ function App() {
       }
     }
 
-    useEffect(()=>{
-      api.getInformation()
-      .then(data => {
-          setCurrentUser(data.data);
-          console.log(currentUser);
-      })
-      .catch((err)=>{console.log(err)})
-  },[])
+  //   useEffect(()=>{
+  //     api.getInformation()
+  //     .then(data => {
+  //         setCurrentUser(data.data);
+  //         console.log(currentUser);
+  //     })
+  //     .catch((err)=>{console.log(err)})
+  // },[])
 
   useEffect(()=>{
       api.getCards()
@@ -223,7 +223,7 @@ function App() {
                         onHandleCardLike = {handleCardLike}
                         onHandleCardDelete = {handleCardDelete}
                         cards={currentCards}
-                        user={userData} 
+                        // user={userData} 
                         handleUpdateUser={handleUpdateUser}
                         handleUpdateAvatar={handleUpdateAvatar}
                         handleUpdateCard={handleUpdateCard}
