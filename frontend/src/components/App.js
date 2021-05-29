@@ -44,7 +44,7 @@ function App() {
               .catch((err)=>{console.log(err)})
             Auth.getContent(data.token)
               .then(data => {
-                  console.log(data);
+                setCurrentCards(data.data);
               })
               .catch((err)=>{console.log(err)})
             return;
