@@ -42,7 +42,7 @@ function App() {
                   console.log(currentUser);
               })
               .catch((err)=>{console.log(err)})
-            Auth.getContent(data.token)
+            Auth.getCards(data.token)
               .then(data => {
                 setCurrentCards(data.data);
               })
