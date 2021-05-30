@@ -34,7 +34,7 @@ function App() {
           if (data.token) {
             setLoggedIn(true)
             localStorage.setItem('token', data.token)
-            infoTooltipPopup();
+            infoTooltipPopup(data);
             Auth.getContent(data.token)
               .then(data => {
                   setCurrentUser(data.data);
@@ -48,8 +48,8 @@ function App() {
             return;
           }
         })
-        .catch(() => 
-            infoTooltipPopup()
+        .catch((err) => 
+            infoTooltipPopup(err)
           )
     }
 
@@ -65,12 +65,11 @@ function App() {
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
           history.push("/signin");
-          openInfoTooltipPopupRegister();
+          infoTooltipPopup(res);
           return res;
         })
-        .catch(() => {
-          console.log(12);
-          openNonInfoTooltipPopupRegister();
+        .catch((err) => {
+          infoTooltipPopup(err);
         });
     }
     const openInfoTooltipPopupRegister = () => {
@@ -165,7 +164,8 @@ function App() {
       setLoggedIn(false);
     }
 
-    const  infoTooltipPopup = () => {
+    const  infoTooltipPopup = (data) => {
+      console.log(data);
       isInfoTooltipPopupOpen();
       if (localStorage.token){
         setInfoTooltipImage(`url(../images/Union.png)`);
