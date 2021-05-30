@@ -68,15 +68,19 @@ function App() {
           isInfoTooltipPopupOpen();
           setInfoTooltipImage(`url(../images/Union.png)`);
           setInfoTooltipText('Вы успешно зарегистрировались!');
-          console.log(1);
+          console.log(infoTooltipImage);
           return res;
         })
         .catch(() => {
-          console.log(2);
-          setIsOpenInfoTooltip(true);
-          setInfoTooltipImage(`url(../images/NotUnion.png)`);
-          setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
+          openInfoTooltipPopupRegister();
         });
+    }
+
+    const openInfoTooltipPopupRegister = () => {
+      setIsOpenInfoTooltip(true);
+      setInfoTooltipImage(`url(../images/NotUnion.png)`);
+      setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
+      console.log(infoTooltipText);
     }
     const history = useHistory();
 
