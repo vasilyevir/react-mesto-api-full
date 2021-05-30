@@ -56,13 +56,13 @@ function App() {
       if (data.message){
         console.log(11, infoTooltipImage);
         setIsOpenInfoTooltip(true);
-        setInfoTooltipImage(`url(../images/Union.png)`);
+        setInfoTooltipImage(true);
         setInfoTooltipText('Вы успешно зарегестрировались!');
         console.log(12, infoTooltipText, infoTooltipImage);
       } else {
         isInfoTooltipPopupOpen();
         console.log(21, isOpenInfoTooltip ,infoTooltipText, infoTooltipImage);
-        setInfoTooltipImage('../images/NotUnion.png');
+        setInfoTooltipImage(false);
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
         console.log(22, infoTooltipText, infoTooltipImage);
       }
@@ -164,12 +164,12 @@ function App() {
     const  infoTooltipPopup = (data) => {
       isInfoTooltipPopupOpen();
       if (localStorage.token || data.message){
-        setInfoTooltipImage(`url(../images/Union.png)`);
+        setInfoTooltipImage(true);
         setInfoTooltipText('Вы успешно авторизировались!');
         console.log(12, infoTooltipImage);
       } else {
         console.log(2)
-        setInfoTooltipImage('../images/NotUnion.png');
+        setInfoTooltipImage(false);
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
       }
     }
