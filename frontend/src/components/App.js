@@ -199,6 +199,7 @@ function App() {
     const  infoTooltipPopupRegister = (data) => {
       isInfoTooltipPopupOpen();
       console.log(data)
+      console.log(isOpenInfoTooltip);
       if (data){
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно зарегистрировались!');
