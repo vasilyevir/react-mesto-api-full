@@ -49,23 +49,34 @@ function App() {
           )
     }
 
-    // useEffect(() => {
-    //   if (loggedIn) {
-    //     history.push("/main");
-        
-    //   }
-    // }, [loggedIn])
+    const  infoTooltipPopupRegister = (data) => {
+      console.log(data);
+      console.log(data.message);
+      // isInfoTooltipPopupOpen();
+      if (data.message){
+        console.log(11, infoTooltipImage);
+        setIsOpenInfoTooltip(true);
+        setInfoTooltipImage(`url(../images/Union.png)`);
+        setInfoTooltipText('Вы успешно авторизировались!');
+        console.log(12, infoTooltipImage);
+      } else {
+        setIsOpenInfoTooltip(true);
+        console.log(2);
+        setInfoTooltipImage('../images/NotUnion.png');
+        setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
+      }
+    }
 
     const handleRegister = ({ password, email }) => {
       return Auth.register({ password, email })
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
           history.push("/signin");
-          infoTooltipPopup(res);
+          infoTooltipPopupRegister(res);
           return res;
         })
         .catch((err) => {
-          infoTooltipPopup(err);
+          infoTooltipPopupRegister(err);
         });
     }
     const history = useHistory();
@@ -149,17 +160,12 @@ function App() {
     }
 
     const  infoTooltipPopup = (data) => {
-      console.log(data);
-      console.log(data.message);
-      // isInfoTooltipPopupOpen();
+      isInfoTooltipPopupOpen();
       if (localStorage.token || data.message){
-        console.log(11, infoTooltipImage);
-      setIsOpenInfoTooltip(true);
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно авторизировались!');
         console.log(12, infoTooltipImage);
       } else {
-      setIsOpenInfoTooltip(true);
         console.log(2)
         setInfoTooltipImage('../images/NotUnion.png');
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
