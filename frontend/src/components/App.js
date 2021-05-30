@@ -167,7 +167,7 @@ function App() {
     const  infoTooltipPopup = (data) => {
       console.log(data);
       isInfoTooltipPopupOpen();
-      if (localStorage.token){
+      if (localStorage.token || data.message){
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно авторизировались!');
       } else {
