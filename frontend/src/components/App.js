@@ -66,7 +66,8 @@ function App() {
       return Auth.register({ password, email })
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
-          infoTooltipPopupRegister(true);
+          infoTooltipPopupRegister(res);
+          console.log(res);
           return res;
         })
         .catch(() => infoTooltipPopupRegister(false));
