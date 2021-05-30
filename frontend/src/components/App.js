@@ -72,18 +72,6 @@ function App() {
           infoTooltipPopup(err);
         });
     }
-    const openInfoTooltipPopupRegister = () => {
-      isInfoTooltipPopupOpen();
-      setInfoTooltipImage(`url(../images/Union.png)`);
-      setInfoTooltipText('Вы успешно зарегистрировались!');
-    }
-
-    const openNonInfoTooltipPopupRegister = () => {
-      setIsOpenInfoTooltip(true);
-      setInfoTooltipImage(`url(../images/NotUnion.png)`);
-      setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
-      console.log(infoTooltipText);
-    }
     const history = useHistory();
 
     useEffect(() => {
@@ -165,6 +153,7 @@ function App() {
     }
 
     const  infoTooltipPopup = (data) => {
+      console.log(data);
       console.log(data.message);
       isInfoTooltipPopupOpen();
       if (localStorage.token || data.message){
