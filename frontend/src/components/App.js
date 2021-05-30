@@ -66,10 +66,10 @@ function App() {
       return Auth.register({ password, email })
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
-          infoTooltipPopupRegister(res);
+          infoTooltipPopupRegister(true);
           return res;
         })
-        .catch()
+        .catch(() => infoTooltipPopupRegister(false));
     }
     const history = useHistory();
 
@@ -198,6 +198,7 @@ function App() {
 
     const  infoTooltipPopupRegister = (data) => {
       isInfoTooltipPopupOpen();
+      console.log('register')
       if (data){
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно зарегистрировались!');
