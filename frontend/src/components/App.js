@@ -58,12 +58,13 @@ function App() {
         setIsOpenInfoTooltip(true);
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно авторизировались!');
-        console.log(12, infoTooltipImage);
+        console.log(12, infoTooltipText, infoTooltipImage);
       } else {
         setIsOpenInfoTooltip(true);
-        console.log(2);
+        console.log(21, isOpenInfoTooltip ,infoTooltipText, infoTooltipImage);
         setInfoTooltipImage('../images/NotUnion.png');
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
+        console.log(22, infoTooltipText, infoTooltipImage);
       }
     }
 
