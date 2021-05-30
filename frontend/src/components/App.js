@@ -63,10 +63,13 @@ function App() {
     // }, [loggedIn])
 
     const handleRegister = ({ password, email }) => {
-      return Auth.register({ password, email }).then((res) => {
-        if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
-        return res;
-      }).catch()
+      return Auth.register({ password, email })
+        .then((res) => {
+          if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
+          infoTooltipPopupRegister(res);
+          return res;
+        })
+        .catch()
     }
     const history = useHistory();
 
@@ -185,6 +188,17 @@ function App() {
     const  infoTooltipPopup = () => {
       isInfoTooltipPopupOpen();
       if (localStorage.token){
+        setInfoTooltipImage(`url(../images/Union.png)`);
+        setInfoTooltipText('Вы успешно авторизировались!');
+      } else {
+        setInfoTooltipImage('../images/NotUnion.png');
+        setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
+      }
+    }
+
+    const  infoTooltipPopupRegister = (data) => {
+      isInfoTooltipPopupOpen();
+      if (data){
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно зарегистрировались!');
       } else {
