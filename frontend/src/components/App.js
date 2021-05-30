@@ -166,21 +166,6 @@ function App() {
       }
     }
 
-    const  infoTooltipPopupRegister = (data) => {
-      isInfoTooltipPopupOpen();
-      console.log(data)
-      console.log(isOpenInfoTooltip);
-      if (data){
-        setInfoTooltipImage(`url(../images/Union.png)`);
-        setInfoTooltipText('Вы успешно зарегистрировались!');
-        console.log(infoTooltipImage, infoTooltipText, isOpenInfoTooltip);
-      } else {
-        setInfoTooltipImage('../images/NotUnion.png');
-        setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
-        console.log(infoTooltipImage, infoTooltipText, isOpenInfoTooltip);
-      }
-    }
-
   useEffect(()=>{
       api.getCards()
       .then(data => {
