@@ -16,12 +16,8 @@ function App() {
     const [currentUser, setCurrentUser] = useState({});
     const [currentCards, setCurrentCards] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false);
-    // const [userData, setUserData] = useState({
-    //     username: '',
-    //     email: ''
-    //   })
-    const [infoTooltipImage, setInfoTooltipImage] = useState(`url(../images/Union.png)`);
-    const [infoTooltipText, setInfoTooltipText] = useState(``);
+    const [infoTooltipImage, setInfoTooltipImage] = useState('');
+    const [infoTooltipText, setInfoTooltipText] = useState('');
 
     // useEffect(() => {
     //   tokenCheck()
@@ -157,9 +153,9 @@ function App() {
       console.log(data.message);
       isInfoTooltipPopupOpen();
       if (localStorage.token || data.message){
-        console.log(1)
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно авторизировались!');
+        console.log(1, infoTooltipImage);
       } else {
         console.log(2)
         setInfoTooltipImage('../images/NotUnion.png');
@@ -187,7 +183,6 @@ function App() {
                         onHandleCardLike = {handleCardLike}
                         onHandleCardDelete = {handleCardDelete}
                         cards={currentCards}
-                        // user={userData} 
                         handleUpdateUser={handleUpdateUser}
                         handleUpdateAvatar={handleUpdateAvatar}
                         handleUpdateCard={handleUpdateCard}
