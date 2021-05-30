@@ -64,11 +64,11 @@ function App() {
       return Auth.register({ password, email })
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
+          history.push("/signin");
           isInfoTooltipPopupOpen();
           setInfoTooltipImage(`url(../images/Union.png)`);
           setInfoTooltipText('Вы успешно зарегистрировались!');
           console.log(1);
-          history.push('/signin')
           return res;
         })
         .catch(() => {
