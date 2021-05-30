@@ -153,10 +153,11 @@ function App() {
       console.log(data.message);
       // isInfoTooltipPopupOpen();
       if (localStorage.token || data.message){
+        console.log(11, infoTooltipImage);
       setIsOpenInfoTooltip(true);
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно авторизировались!');
-        console.log(1, infoTooltipImage);
+        console.log(12, infoTooltipImage);
       } else {
       setIsOpenInfoTooltip(true);
         console.log(2)
