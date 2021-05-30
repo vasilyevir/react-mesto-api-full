@@ -19,10 +19,6 @@ function App() {
     const [infoTooltipImage, setInfoTooltipImage] = useState('');
     const [infoTooltipText, setInfoTooltipText] = useState('');
 
-    // useEffect(() => {
-    //   tokenCheck()
-    // }, [])
-
     const handleLogin = ({ password, email  }) => {
       return Auth.authorize(password, email)
         .then((data) => {
@@ -50,21 +46,14 @@ function App() {
     }
 
     const  infoTooltipPopupRegister = (data) => {
-      console.log(data);
-      console.log(data.message);
-      // isInfoTooltipPopupOpen();
       if (data.message){
-        console.log(11, infoTooltipImage);
         setIsOpenInfoTooltip(true);
         setInfoTooltipImage(true);
         setInfoTooltipText('Вы успешно зарегестрировались!');
-        console.log(12, infoTooltipText, infoTooltipImage);
       } else {
         isInfoTooltipPopupOpen();
-        console.log(21, isOpenInfoTooltip ,infoTooltipText, infoTooltipImage);
         setInfoTooltipImage(false);
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
-        console.log(22, infoTooltipText, infoTooltipImage);
       }
     }
 
@@ -166,9 +155,7 @@ function App() {
       if (localStorage.token || data.message){
         setInfoTooltipImage(true);
         setInfoTooltipText('Вы успешно авторизировались!');
-        console.log(12, infoTooltipImage);
       } else {
-        console.log(2)
         setInfoTooltipImage(false);
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
       }
