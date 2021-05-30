@@ -12,7 +12,7 @@ function InfoTooltip(props) {
             >
                 <>
                     <div 
-                        className={localStorage.token ? `info-tooltip__image info-tooltip__image_right`: `info-tooltip__image info-tooltip__image_wrong`}>
+                        className={props.image ? `info-tooltip__image info-tooltip__image_right`: `info-tooltip__image info-tooltip__image_wrong`}>
                     </div>
                     <h2 className="popup__text popup__text_type_form">{props.text}</h2>
                 </>

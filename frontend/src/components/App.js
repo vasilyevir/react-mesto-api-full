@@ -57,7 +57,7 @@ function App() {
         console.log(11, infoTooltipImage);
         setIsOpenInfoTooltip(true);
         setInfoTooltipImage(`url(../images/Union.png)`);
-        setInfoTooltipText('Вы успешно авторизировались!');
+        setInfoTooltipText('Вы успешно зарегестрировались!');
         console.log(12, infoTooltipText, infoTooltipImage);
       } else {
         isInfoTooltipPopupOpen();
@@ -212,7 +212,13 @@ function App() {
                         />
                     </Route>
                     <Route path='/signup'>
-                        <Register onRegister={handleRegister}/>
+                        <Register 
+                          onRegister={handleRegister}
+                          infoTooltipImage={infoTooltipImage}
+                          infoTooltipText={infoTooltipText}
+                          isOpenInfoTooltip={isOpenInfoTooltip}
+                          closeInfoTooltipPopup={closeInfoTooltipPopup} 
+                        />
                     </Route>
                      <Route>
                         {loggedIn ? <Redirect to="/main" /> : <Redirect to="/signin" />}
