@@ -57,14 +57,12 @@ module.exports.deleteСard = (req, res, next) => {
 module.exports.likeCard = (req, res, next) => {
   Users.findById(req.user._id)
     .then((userInfo) => {
-      console.log(userInfo);
       Cards.findByIdAndUpdate(
         req.params.cardId,
         { $addToSet: { likes: userInfo } },
         { new: true },
       )
         .then((cards) => {
-          console.log(cards);
           if (cards) {
             res.send({ data: cards });
           } else {
@@ -72,7 +70,6 @@ module.exports.likeCard = (req, res, next) => {
           }
         })
         .catch((err) => {
-          console.log(err);
           if (err.name === 'CastError') {
             next(new RequestError('Переданы некорректные данные при постановке лайка.'));
             return;

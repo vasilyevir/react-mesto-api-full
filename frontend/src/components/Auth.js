@@ -1,7 +1,6 @@
 export const BASE_URL = 'https://vasilyevir-mesto-backend.nomoredomains.icu';
 
 export const register = ({password, email}) => {
-    console.log(BASE_URL)
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
@@ -14,7 +13,7 @@ export const register = ({password, email}) => {
         })
     })
     .then(checkResponse)
-    .catch(console.log(`'password' : ${password}`))
+    .catch()
 };
 
 export const authorize = (password, email) => {

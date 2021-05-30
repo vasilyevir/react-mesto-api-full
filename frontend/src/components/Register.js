@@ -23,7 +23,6 @@ const Registr = ({onRegister}) => {
     const handleSubmit = (e) => {
         let { password, email } = userData;
         e.preventDefault();
-        console.log({ password, email })
         onRegister({ password, email }).catch(
             err => setMessage(err.message || 'Что-то пошло не так')
         )

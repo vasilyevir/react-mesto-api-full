@@ -35,11 +35,9 @@ function App() {
             setLoggedIn(true)
             localStorage.setItem('token', data.token)
             infoTooltipPopup();
-            console.log(data);
             Auth.getContent(data.token)
               .then(data => {
                   setCurrentUser(data.data);
-                  console.log(currentUser);
               })
               .catch((err)=>{console.log(err)})
             Auth.getCards(data.token)
@@ -66,30 +64,21 @@ function App() {
       return Auth.register({ password, email })
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
-          infoTooltipPopupRegister(res);
-          console.log(res);
+          isInfoTooltipPopupOpen();
+          setInfoTooltipImage(`url(../images/Union.png)`);
+          setInfoTooltipText('Вы успешно зарегистрировались!');
           return res;
         })
-        .catch(() => infoTooltipPopupRegister(false));
+        .catch(() => {
+          isInfoTooltipPopupOpen();
+          setInfoTooltipImage(`url(../images/Union.png)`);
+          setInfoTooltipText('Вы успешно зарегистрировались!');
+        });
     }
     const history = useHistory();
 
-    // useEffect(() => {
-    //   userCheck();
-    // }, [])
-
-    // const userCheck = () => {
-    //   api.getInformation()
-    //     .then(data => {
-    //         setCurrentUser(data);
-    //         // console.log(data)
-    //     })
-    //     .catch((err)=>{console.log(err)})
-    // }
-
     useEffect(() => {
       tokenCheck()
-      console.log(2);
     }, [])
 
     const tokenCheck = () => {
@@ -99,28 +88,10 @@ function App() {
           if (data._id) {
             setLoggedIn(true)
             setCurrentUser(data)
-            // console.log(userData)
           }
       })
     }
   }
-//     useEffect(()=>{
-//       api.getInformation()
-//       .then(data => {
-//           setCurrentUser(data.data);
-//           console.log(currentUser)
-//       })
-//       .catch((err)=>{console.log(err)})
-
-//   },[])
-
-//   useEffect(()=>{
-//     api.getCards()
-//     .then(data => {
-//         setCurrentCards(data.data);
-//     })
-//     .catch((err)=>{console.log(err)})
-// },[])
     
       useEffect(() => {
         if (loggedIn) {
@@ -129,7 +100,6 @@ function App() {
       }, [loggedIn])
 
     function handleCardLike(card) {
-        // console.log(typeof card.likes);
         const isLiked = card.likes.some(i => i._id === currentUser._id);
         
         api.postLike(card._id, !isLiked).then((newCard) => {
@@ -167,7 +137,6 @@ function App() {
         api.changeProfile(data)
             .then(data =>{
                 setCurrentUser(data);
-                console.log(currentUser);
             })
             .catch((err)=>{console.log(err)})
     }
@@ -212,19 +181,9 @@ function App() {
       }
     }
 
-  //   useEffect(()=>{
-  //     api.getInformation()
-  //     .then(data => {
-  //         setCurrentUser(data.data);
-  //         console.log(currentUser);
-  //     })
-  //     .catch((err)=>{console.log(err)})
-  // },[])
-
   useEffect(()=>{
       api.getCards()
       .then(data => {
-        // console.log(data.data);
           setCurrentCards(data.data);
       })
       .catch((err)=>{console.log(err)})
