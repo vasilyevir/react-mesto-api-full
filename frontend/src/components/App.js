@@ -67,9 +67,11 @@ function App() {
           isInfoTooltipPopupOpen();
           setInfoTooltipImage(`url(../images/Union.png)`);
           setInfoTooltipText('Вы успешно зарегистрировались!');
+          console.log(1);
           return res;
         })
         .catch(() => {
+          console.log(2);
           isInfoTooltipPopupOpen();
           setInfoTooltipImage(`url(../images/Union.png)`);
           setInfoTooltipText('Вы успешно зарегистрировались!');
