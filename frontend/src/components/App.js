@@ -20,8 +20,8 @@ function App() {
     //     username: '',
     //     email: ''
     //   })
-    const [infoTooltipImage, setInfoTooltipImage] = useState("");
-    const [infoTooltipText, setInfoTooltipText] = useState("");
+    const [infoTooltipImage, setInfoTooltipImage] = useState(`url(../images/Union.png)`);
+    const [infoTooltipText, setInfoTooltipText] = useState(``);
 
     // useEffect(() => {
     //   tokenCheck()
