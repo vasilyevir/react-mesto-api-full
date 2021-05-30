@@ -60,7 +60,7 @@ function App() {
         setInfoTooltipText('Вы успешно авторизировались!');
         console.log(12, infoTooltipText, infoTooltipImage);
       } else {
-        setIsOpenInfoTooltip(true);
+        isInfoTooltipPopupOpen();
         console.log(21, isOpenInfoTooltip ,infoTooltipText, infoTooltipImage);
         setInfoTooltipImage('../images/NotUnion.png');
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
@@ -147,6 +147,7 @@ function App() {
     }
 
     const isInfoTooltipPopupOpen = () =>{
+      console.log(3);
       setIsOpenInfoTooltip(true);
     }
 
