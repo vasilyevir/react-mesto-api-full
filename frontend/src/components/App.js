@@ -65,18 +65,21 @@ function App() {
         .then((res) => {
           if (!res || res.statusCode === 400) throw new Error('Что-то пошло не так');
           history.push("/signin");
-          isInfoTooltipPopupOpen();
-          setInfoTooltipImage(`url(../images/Union.png)`);
-          setInfoTooltipText('Вы успешно зарегистрировались!');
-          console.log(infoTooltipImage);
+          openInfoTooltipPopupRegister();
           return res;
         })
         .catch(() => {
-          openInfoTooltipPopupRegister();
+          console.log(12);
+          openNonInfoTooltipPopupRegister();
         });
     }
-
     const openInfoTooltipPopupRegister = () => {
+      isInfoTooltipPopupOpen();
+      setInfoTooltipImage(`url(../images/Union.png)`);
+      setInfoTooltipText('Вы успешно зарегистрировались!');
+    }
+
+    const openNonInfoTooltipPopupRegister = () => {
       setIsOpenInfoTooltip(true);
       setInfoTooltipImage(`url(../images/NotUnion.png)`);
       setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
