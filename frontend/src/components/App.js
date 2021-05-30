@@ -165,12 +165,14 @@ function App() {
     }
 
     const  infoTooltipPopup = (data) => {
-      console.log(data);
+      console.log(data.message);
       isInfoTooltipPopupOpen();
       if (localStorage.token || data.message){
+        console.log(1)
         setInfoTooltipImage(`url(../images/Union.png)`);
         setInfoTooltipText('Вы успешно авторизировались!');
       } else {
+        console.log(2)
         setInfoTooltipImage('../images/NotUnion.png');
         setInfoTooltipText('Что-то пошло не так! Попробуйте ещё раз.');
       }
