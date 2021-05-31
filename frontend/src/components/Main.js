@@ -89,32 +89,32 @@ function Main(props){
                 type="button"
                 onClick = {handleAddPlaceClick}    
             ></button>
-            <EditProfilePopup 
-                    isOpen={isOpenEditProfile} 
-                    onClose={closeAllPopups} 
-                    onUpdateUser={props.handleUpdateUser}
-                />
-                <EditAvatarPopup
-                    isOpen={isOpenEditAvatar}
-                    onClose={closeAllPopups}
-                    onUpdateAvatar={props.handleUpdateAvatar}
-                />
-                <AddPlacePopup
-                    isOpen={isOpenAddCard}
-                    onClose={closeAllPopups}
-                    onUpdateCard={props.handleUpdateCard}
-                />
-                <InfoTooltip
-                    onClose={props.closeInfoTooltipPopup}
-                    image={props.infoTooltipImage}
-                    text={props.infoTooltipText}
-                    isOpenInfoTooltip={props.isOpenInfoTooltip}
-                />
-                <ImagePopup
-                    card = {isSelectedCard.link !== "" ? isSelectedCard : ""}
-                    onClose = {closeAllPopups}
-                />
         </section>
+        <EditProfilePopup 
+            isOpen={isOpenEditProfile} 
+            onClose={closeAllPopups} 
+            onUpdateUser={props.handleUpdateUser}
+        />
+        <EditAvatarPopup
+            isOpen={isOpenEditAvatar}
+            onClose={closeAllPopups}
+            onUpdateAvatar={props.handleUpdateAvatar}
+        />
+        <AddPlacePopup
+            isOpen={isOpenAddCard}
+            onClose={closeAllPopups}
+            onUpdateCard={props.handleUpdateCard}
+        />
+        <InfoTooltip
+            onClose={props.closeInfoTooltipPopup}
+            image={props.infoTooltipImage}
+            text={props.infoTooltipText}
+            isOpenInfoTooltip={props.isOpenInfoTooltip}
+        />
+        <ImagePopup
+            card = {isSelectedCard.link !== "" ? isSelectedCard : ""}
+            onClose = {closeAllPopups}
+        />
             <section className="elements">
                 {props.cards.map((item)=>
                     (<Card
